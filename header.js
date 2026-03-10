@@ -1,5 +1,12 @@
 
 (function () {
+  // Inject favicon into <head> for all pages
+  const link = document.createElement('link');
+  link.rel  = 'icon';
+  link.type = 'image/svg+xml';
+  link.href = 'favicon.svg';
+  document.head.appendChild(link);
+
   // Determine which page is current to set the active nav link
   const page = window.location.pathname.split('/').pop() || 'index.html';
   const isHome = (page === 'index.html' || page === '');
