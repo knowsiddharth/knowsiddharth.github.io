@@ -14,6 +14,7 @@
   const pages = [
     { href: 'index.html',     label: 'Home' },
     { href: 'research.html',  label: 'Research' },
+    { href: 'projects.html',  label: 'Projects' },
     { href: 'bookshelf.html', label: 'Bookshelf' },
     { href: 'contact.html',   label: 'Contact' },
   ];
@@ -30,7 +31,7 @@
   // Only show the semester/meta line and portrait on the home page
   const metaLine = isHome
     ? `<div class="masthead-meta">
-          Semester VI <span class="ornament">§</span> 2026&ensp;·&ensp;New Delhi, India&ensp;·&ensp;Updated March 2026
+          Semester VI <span class="ornament">§</span> 2026&ensp;·&ensp;New Delhi, India&ensp;·&ensp;Updated July 2026
         </div>`
     : '';
 
@@ -65,4 +66,18 @@
   // Insert the header before the first child of .page (or at the top of body)
   const page_div = document.querySelector('.page') || document.body;
   page_div.insertAdjacentHTML('afterbegin', headerHTML);
+
+  // --- FOOTER ---
+  // Must wait for full DOM parse so 'beforeend' lands after <main>, not mid-page.
+  document.addEventListener('DOMContentLoaded', function () {
+    const footerHTML = `
+  <footer class="site-footer">
+    <span>Siddharth Yadav <span class="ornament">¶</span> New Delhi, 2026</span>
+    <span class="footer-ornament">❧</span>
+    <span>Built with type &amp; care</span>
+  </footer>`;
+
+    const container = document.querySelector('.page') || document.body;
+    container.insertAdjacentHTML('beforeend', footerHTML);
+  });
 })();
